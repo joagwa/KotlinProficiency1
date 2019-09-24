@@ -1,9 +1,6 @@
-package com.example.kotlinproficiency1
+package com.example.kotlinproficiency1.Adapters
 
-import android.app.Application
 import android.content.Context
-import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import java.io.InputStream
-import java.net.URL
+import com.example.kotlinproficiency1.Models.Fact
+import com.example.kotlinproficiency1.R
 
 class FactAdapter(private val context: Context,
                   private val view: Int,
@@ -42,7 +39,6 @@ class FactAdapter(private val context: Context,
         val fact = getItem(p0) as Fact
         titleTextView.text = fact.title
         descriptionTextView.text = fact.description
-        var cropOptions = RequestOptions().override(600,400)
         Glide.with(this.context).load(fact.imageHref).into(imageView)
         return rowView
     }

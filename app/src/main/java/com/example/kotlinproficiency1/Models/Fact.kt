@@ -1,6 +1,4 @@
-package com.example.kotlinproficiency1
-
-import android.media.Image
+package com.example.kotlinproficiency1.Models
 
 class Fact(){
     var title: String = ""

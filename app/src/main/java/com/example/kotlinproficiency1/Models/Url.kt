@@ -1,4 +1,4 @@
-package com.example.kotlinproficiency1
+package com.example.kotlinproficiency1.Models
 
 class Url{
     companion object {

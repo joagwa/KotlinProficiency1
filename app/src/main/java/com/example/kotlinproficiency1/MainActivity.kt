@@ -5,7 +5,9 @@ import android.content.res.Resources
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.MainThread
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import com.beust.klaxon.Json
 import com.beust.klaxon.Klaxon
@@ -27,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         adapter = FactAdapter(this, R.layout.item_list_content, factList)
         factListView.adapter = adapter
         updateList()
+        val refreshButton = findViewById<Button>(R.id.refresh_button)
+
+        refreshButton.setOnClickListener{ run() }
     }
 
     fun run(){
@@ -40,8 +45,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                var body = response.body()?.string()
-                var container = Klaxon().parse<Container>(body ?: "")
+                val body = response.body()?.string()
+                val container = Klaxon().parse<Container>(body ?: "")
                 factList = container?.rows ?: ArrayList<Fact>()
                 this@MainActivity.runOnUiThread {
                     factListView.adapter = FactAdapter(this@MainActivity, R.layout.item_list_content, factList)

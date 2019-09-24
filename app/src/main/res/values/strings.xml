@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KotlinProficiency1</string>
+    <string name="refresh_button_Text">Refresh</string>
 </resources>
